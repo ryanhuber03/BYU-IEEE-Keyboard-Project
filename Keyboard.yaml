@@ -12,7 +12,7 @@ points:
     matrix:
       key:
         padding: cy * 1.2
-        spread: cx * 1.1
+        spread: cx * 1.2
       columns:
         function:
           key.rotate: -1
@@ -38,12 +38,16 @@ points:
           key.splay: -3
           key.stagger: -3
           key.rotate: 1
+          key.spread: cx * 1.5
       rows:
         bottom:
         main:
         top:
         numbers:
     thumb:
+      key:
+        padding: cy * 1.2
+        spread: cy * 1.2
       anchor:
         rotate: -15
         ref: matrix_macro_bottom
