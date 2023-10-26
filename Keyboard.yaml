@@ -6,7 +6,11 @@ metadata:
 units:
   kx: cx
   ky: cy
+  capsx: 16.5
+  capsy: 16.5
   default_spread: cx
+  px: capsx-3
+  py: capsy-3
 points:
   zones:
     matrix:
@@ -56,5 +60,55 @@ points:
         1:
         2:
       columns:
-       1:
-       2:
+        1:
+        2:
+outlines:
+  keys:
+  - what: rectangle
+    where: true
+    size: [cx,cy]
+  keycaps:
+  - what: rectangle
+    where: true
+    size: [cx, cy]
+  board:
+  - what: polygon
+    operation: stack
+    fillet: 10
+    points:
+    - ref: matrix_function_bottom
+      shift: [-px,-py]
+    - ref: matrix_function_numbers
+      shift: [-px, py]
+    - ref: matrix_pinky_numbers
+      shift: [0, py]
+    - ref: matrix_ring_numbers
+      shift: [0, py]
+    - ref: matrix_middle_numbers
+      shift: [0, py]
+    - ref: matrix_pointer_numbers
+      shift: [0, py]
+    - ref: matrix_inner_numbers
+      shift: [0, py]
+    - ref: matrix_macro_numbers
+      shift: [px, py]
+    - ref: matrix_macro_bottom
+      shift: [px, 0]
+    - ref: thumb_2_2
+      shift: [px, py]
+    - ref: thumb_2_1
+      shift: [px, -py]
+    - ref: thumb_1_1
+      shift: [-px, -py]
+    - ref: thumb_1_2
+      shift: [-px, py]
+    - ref: matrix_inner_bottom
+      shift: [-px, -py]
+    - ref: matrix_middle_bottom
+      shift: [0, -py]
+    - ref: matrix_pinky_bottom
+      shift: [0, -py]
+  panel:
+  - name: board
+  - operation: subtract
+    name: keycaps
