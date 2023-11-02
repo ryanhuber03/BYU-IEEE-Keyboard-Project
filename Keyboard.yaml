@@ -1,7 +1,7 @@
 metadata:
   engine: 4.0.2
   version: 0.1
-  author: Ryan, Erik, Austin
+  author: Ryan, Erik, Austin, Will
   company: BYU IEEE 2023-2024
 units:
   kx: cx
@@ -55,7 +55,7 @@ points:
       anchor:
         rotate: -15
         ref: matrix_macro_bottom
-        shift: [-10, -45]
+        shift: [-30, -45]
       rows:
         1:
         2:
@@ -68,9 +68,20 @@ points:
         width: 18
         height: 45
       anchor:
-        rotate: 75
-        ref: matrix_function_bottom
-        shift: [70, -25]
+        rotate: 0
+        ref: matrix_macro_bottom
+        shift: [20, 15]
+      rows:
+        1:
+      columns:
+        1:
+    battery:
+      key:
+        width: 18
+        height: 65
+      anchor:
+        rotate: 85
+        shift: [50,-22]
       rows:
         1:
       columns:
@@ -88,6 +99,10 @@ outlines:
   - what: rectangle
     where: controller_1_1
     size: [18,45]
+  battery:
+  - what: rectangle
+    where: battery_1_1
+    size: [18,65]
   board:
   - what: polygon
     operation: stack
@@ -109,10 +124,10 @@ outlines:
       shift: [0, py]
     - ref: matrix_macro_numbers
       shift: [px, py]
-    - ref: matrix_macro_bottom
-      shift: [px, 0]
-    - ref: thumb_2_2
+    - ref: controller_1_1
       shift: [px, py]
+    - ref: matrix_macro_bottom
+      shift: [px+20, -5]
     - ref: thumb_2_1
       shift: [px, -py]
     - ref: thumb_1_1
@@ -125,3 +140,7 @@ outlines:
   - name: panel
   - operation: subtract
     name: controller
+  test:
+  - name: everything
+  - operation: subtract
+    name: battery
