@@ -20,35 +20,53 @@ points:
         spread: cx * 1.2
       columns:
         function:
-          key.rotate: -1
+          key:
+            rotate: -1
+            column_net: P3
         pinky:
-          key.splay: -3
-          key.stagger: 3
-          key.rotate: -1
+          key:
+            splay: -3
+            stagger: 3
+            rotate: -1
+            column_net: P4
         ring:
-         key.splay: -5
-         key.stagger: 8
+          key:
+            splay: -5
+            stagger: 8
+            column_net: P5
         middle:
-          key.splay: -5
-          key.stagger: 3
+          key:
+            splay: -5
+            stagger: 3
+            column_net: P6
         pointer:
-          key.splay: -5
-          key.stagger: -3
-          key.rotate: 1
+          key:
+            splay: -5
+            stagger: -3
+            rotate: 1
+            column_net: P15
         inner:
-          key.splay: -3
-          key.stagger: -5
-          key.rotate: 1
+          key:
+            splay: -3
+            stagger: -5
+            rotate: 1
+            column_net: P18
         macro:
-          key.splay: -3
-          key.stagger: -3
-          key.rotate: 1
-          key.spread: cx * 1.5
+          key:
+            splay: -3
+            stagger: -3
+            rotate: 1
+            spread: cx * 1.5
+            column_net: P19
       rows:
         bottom:
+          row_net: P14
         main:
+          row_net: P16
         top:
+          row_net: P7
         numbers:
+          row_net: P8
     thumb:
       key:
         padding: cy * 1.2
@@ -59,10 +77,17 @@ points:
         shift: [-30, -45]
       rows:
         1:
+          row_net: P14
         2:
+          row_net: P16
       columns:
         1:
+          key.column_net: P2
         2:
+<<<<<<< HEAD:config.yaml
+=======
+          key.column_net: P21
+>>>>>>> 9357610e44a2e8f6ba388603f1c14285e4b9d184:Keyboard.yaml
 outlines:
   keys:
   - what: rectangle
@@ -71,7 +96,11 @@ outlines:
   keycaps:
   - what: rectangle
     where: true
+<<<<<<< HEAD:config.yaml
     size: [cx, cy]
+=======
+    size: [capsx, capsy]
+>>>>>>> 9357610e44a2e8f6ba388603f1c14285e4b9d184:Keyboard.yaml
   board:
   - what: polygon
     operation: stack
@@ -141,10 +170,16 @@ pcbs:
         what: promicro
         params:
           orientation: "down"
+<<<<<<< HEAD:config.yaml
+=======
+          P1: 'RAW'
+          P0: 'GND'
+>>>>>>> 9357610e44a2e8f6ba388603f1c14285e4b9d184:Keyboard.yaml
         where:
           ref: matrix_function_bottom
           shift: [2px, -py-2]
 
+<<<<<<< HEAD:config.yaml
       rgbB:
         what: rgb
         params:
@@ -164,3 +199,17 @@ pcbs:
         where: true
         adjust:
           shift: [0, ledy]
+=======
+      connector:
+        what: trrs
+        params:
+          A: "VCC"
+          B: "GND"
+          C: "P9"
+          D: "P10"
+          reverse: true
+        where:
+          ref: matrix_macro_bottom
+          shift: [-2,-px]
+          rotate: 270
+>>>>>>> 9357610e44a2e8f6ba388603f1c14285e4b9d184:Keyboard.yaml
