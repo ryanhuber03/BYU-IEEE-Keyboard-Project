@@ -1,0 +1,166 @@
+metadata:
+  engine: 4.0.2
+  version: 0.1
+  author: Ryan, Erik, Austin, Will
+  company: BYU IEEE 2023-2024
+units:
+  kx: cx
+  ky: cy
+  capsx: 16.5
+  capsy: 16.5
+  default_spread: cx
+  px: capsx-2
+  py: capsy-2
+  ledy: 5 - (cx/2)
+points:
+  zones:
+    matrix:
+      key:
+        padding: cy * 1.2
+        spread: cx * 1.2
+      columns:
+        function:
+          key.rotate: -1
+        pinky:
+          key.splay: -3
+          key.stagger: 3
+          key.rotate: -1
+        ring:
+         key.splay: -5
+         key.stagger: 8
+        middle:
+          key.splay: -5
+          key.stagger: 3
+        pointer:
+          key.splay: -5
+          key.stagger: -3
+          key.rotate: 1
+        inner:
+          key.splay: -3
+          key.stagger: -5
+          key.rotate: 1
+        macro:
+          key.splay: -3
+          key.stagger: -3
+          key.rotate: 1
+          key.spread: cx * 1.5
+      rows:
+        bottom:
+        main:
+        top:
+        numbers:
+    thumb:
+      key:
+        padding: cy * 1.2
+        spread: cy * 1.2
+      anchor:
+        rotate: -15
+        ref: matrix_macro_bottom
+        shift: [-30, -45]
+      rows:
+        1:
+        2:
+      columns:
+        1:
+        2:
+outlines:
+  keys:
+  - what: rectangle
+    where: true
+    size: [cx,cy]
+  keycaps:
+  - what: rectangle
+    where: true
+    size: [cx, cy]
+  board:
+  - what: polygon
+    operation: stack
+    fillet: 10
+    points:
+    - ref: matrix_function_bottom
+      shift: [-px,-py]
+    - ref: matrix_function_numbers
+      shift: [-px, py]
+    - ref: matrix_pinky_numbers
+      shift: [0, py]
+    - ref: matrix_ring_numbers
+      shift: [0, py]
+    - ref: matrix_middle_numbers
+      shift: [0, py]
+    - ref: matrix_pointer_numbers
+      shift: [0, py]
+    - ref: matrix_inner_numbers
+      shift: [0, py]
+    - ref: matrix_macro_numbers
+      shift: [px, py]
+    - ref: matrix_macro_bottom
+      shift: [px+5, -18]
+    - ref: thumb_2_1
+      shift: [px, -py]
+    - ref: thumb_1_1
+      shift: [-px, -py]
+  panel:
+  - name: board
+  - operation: subtract
+    name: keycaps
+pcbs:
+  boardPcb:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      choc_hotswap:
+        what: choc
+        where: True
+        params:
+          keycaps: True
+          reverse: True
+          hotswap: True
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      
+      switch_via:
+        what: via
+        where: true
+        params:
+          net: "{{column_net}}"
+        adjust:
+          shift: [0, cy/2]
+
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [cy/2 -.7, -3]
+          rotate: 90
+      
+      microcontroller:
+        what: promicro
+        params:
+          orientation: "down"
+        where:
+          ref: matrix_function_bottom
+          shift: [2px, -py-2]
+
+      rgbB:
+        what: rgb
+        params:
+          side: "B"
+          din: "din"
+          dout: "dout"
+        where: true
+        adjust:
+          shift: [0, ledy]
+
+      rgbF:
+        what: rgb
+        params:
+          side: "F"
+          din: "din"
+          dout: "dout"
+        where: true
+        adjust:
+          shift: [0, ledy]
