@@ -1,8 +1,8 @@
 metadata:
   engine: 4.1
   version: 0.1
-  author: Carter Pollan
-  contact: carter.pollan@gmail.com
+  author: Ryan Huber
+  contact: ryanhuber03@gmail.com
 units:
   default_stagger: 0
   default_spread: 'cx'
